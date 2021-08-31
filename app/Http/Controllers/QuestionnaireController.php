@@ -47,6 +47,7 @@ class QuestionnaireController extends Controller
         $Questionnaire->title = $request->category;
         $Questionnaire->purpose = $request->purpose;
         $Questionnaire->save();
+
         // // return redirect(url('/'))->with('success', 'Category created successfully');
         return response()->json(['message'=>'data saved successfully']);
 
@@ -61,7 +62,6 @@ class QuestionnaireController extends Controller
     public function show()
     {
         $questionnaires = Questionnaire::all();
-        // dd($questionnaires);
         return view('questionnaires.show', compact('questionnaires'));
 
     }
