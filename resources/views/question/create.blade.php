@@ -38,13 +38,13 @@
           </button>
         </div>
         <div class="modal-body">
-            <form action="{{ route('storequestion') }}" method="post">
+           <form action="{{ route('storequestion') }}" method="post"> 
                 @csrf
-                    <input  type="hidden" value="{{$category->id}}" name="category">
+                    <input  type="hidden" value="{{$category->id}}" name="category" id="category">
             
                 <div class="form-group">
                     <label for="Question">Question</label>
-                    <input type="text" class="form-control" name="question" placeholder="Enter the Question" required>
+                    <input type="text" class="form-control" name="question" id="question" placeholder="Enter the Question" required>
                      <small id="questionHelp" class="form-text text-muted">Give a question that attracts attention.</small>
                 </div>                
         
@@ -54,25 +54,25 @@
                 <br>
                     <div class="form-group">
                         <label for="choice1">Choice 1</label>
-                        <input type="text" class="form-control" name="choice[]" placeholder="Enter Choice 1" required>              
+                        <input type="text" class="form-control" name="choice[]" id="choice" placeholder="Enter Choice 1" required>              
                     </div>
                     <div class="form-group">
                         <label for="choice2">Choice 2</label>
-                        <input type="text" class="form-control" name="choice[]" placeholder="Enter Choice 2" required>              
+                        <input type="text" class="form-control" name="choice[]" id="choice" placeholder="Enter Choice 2" required>              
                     </div>
                     <div class="form-group">
                         <label for="choice3">Choice 3</label>
-                        <input type="text" class="form-control" name="choice[]" placeholder="Enter Choice 3" required>              
+                        <input type="text" class="form-control" name="choice[]" id="choice" placeholder="Enter Choice 3" required>              
                     </div>
                     <div class="form-group">
                         <label for="choice4">Choice 4</label>
-                        <input type="text" class="form-control" name="choice[]" placeholder="Enter Choice 4" required>              
+                        <input type="text" class="form-control" name="choice[]" id="choice" placeholder="Enter Choice 4" required>              
                     </div>                                               
                 {{-- <button class="btn btn-info float-right" type="submit">Add Question</button> --}}
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Add</button>
+           <button type="submit" class="btn btn-primary">Add</button> 
         </div>
       </form>
       </div>

@@ -17,8 +17,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link type="text/css" href="{{ asset('css/toastr.css') }}"  rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    {{-- <link type="text/css" href="{{ asset('css/toastr.css') }}"  rel="stylesheet"> --}}
 </head>
 <body>
     <div id="app">
@@ -102,12 +102,14 @@
             </div>
          </div>
     </div>
-    <script >   </script>
+    {{-- <script >   </script>
     <script  src="{{ asset('js/test.js') }}"></script>
-    <script  src="{{ asset('js/toastr.js') }}"></script>
+    <script  src="{{ asset('js/toastr.js') }}"></script> --}}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
     <script >
 
         setTimeout(function() {
@@ -115,6 +117,13 @@
         }, 10000);
 
         $(document).ready(function(){
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
 
             $('#participantFilter').hide();
             $('#surveyFilter').hide();
@@ -131,10 +140,49 @@
                 $('#surveyFilter').show();
                }
             })
-    
-
 
         })
+
+        document.getElementById('submitCategory').addEventListener('click', (event) => {
+            event.preventDefault();
+            const requestBody = {
+                category: document.getElementById('category').value,
+                purpose: document.getElementById('purpose').value
+            }
+            axios.post('{{ route('storequestionnaire') }}', requestBody)
+                .then((response) => {
+                    console.log(response.data);
+                    $.ajax({
+                        url: window.location.href= "{{url('/')}}",
+                        });
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+
+        }) 
+
+        
+        //    document.getElementById('AddCategory').addEventListener('click', (event) => {
+        //     event.preventDefault();
+        //     const requestBody = {
+        //         choice: document.getElementById('choice').value,
+        //         question: document.getElementById('question').value
+        //         category: document.getElementById('category').value
+        //     }
+        //     axios.post('{{ route('storequestion') }}', requestBody)
+        //         .then((response) => {
+        //             console.log(response.data);
+        //             $.ajax({
+        //                 url: window.location.href= "{{url('/')}}",
+        //                 });
+        //         })
+        //         .catch((error) => {
+        //             console.log(error);
+        //         })
+
+        // })    
+     
 
     </script>
 </body>

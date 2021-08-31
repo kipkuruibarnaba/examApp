@@ -42,14 +42,13 @@ class QuestionnaireController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        // dd($data);
         $Questionnaire = new Questionnaire;
         $Questionnaire->user_id = auth::user()->id;
         $Questionnaire->title = $request->category;
         $Questionnaire->purpose = $request->purpose;
         $Questionnaire->save();
-        return redirect(url('/'))->with('success', 'Category created successfully');
+        // // return redirect(url('/'))->with('success', 'Category created successfully');
+        return response()->json(['message'=>'data saved successfully']);
 
     }
 
