@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Questionnaire;
 use App\Question;
+use App\Answer;
+use App\SurveyResponse;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class QuestionnaireController extends Controller
@@ -103,6 +106,24 @@ class QuestionnaireController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $deleteCategory = @Questionnaire::find($id);
+        // dd($deleteCategory);
+        // if($deleteCategory){
+        //       $updateCategory = @Questionnaire::where(['id'=>$deleteCategory->id])->update(array('deleted_at'=>Carbon::now()));
+        // }
+        // $deleteSurvey = @SurveyResponse::where(['category_id'=>$deleteCategory->id])->get();
+        // dd($deleteSurvey);
+
+        // if($deleteSurvey){
+        //   $updateSurvey = @SurveyResponse::where(['id'=>$deleteCategory->id])->update(array('deleted_at'=>Carbon::now()));
+        // }
+
+        // $deleteQuestion = @Question::where(['questionnaire_id'=>$deleteCategory->id])->get();
+
+        //   foreach ($deleteQuestion as $Ques){
+        //      $deleteAnswer = @Answer::where(['question_id'=>$Ques->id])->get();
+    
+        //   }
+        return redirect(url('/'))->with('success', 'Category Deleted successfully');
     }
 }

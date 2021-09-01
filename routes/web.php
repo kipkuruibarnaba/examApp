@@ -93,5 +93,11 @@ Route::group(['prefix'=>'admin',  'middleware'=>'auth'], function (){
         'uses' => 'QuestionnaireController@update',
         'as'=> 'updatequestions'
     ]); 
+
+     Route::get('/deletequestion/{id}',[
+        'uses' => 'QuestionnaireController@destroy',
+        'as'=> 'deletequestion'
+    ]); 
+        
     
 });

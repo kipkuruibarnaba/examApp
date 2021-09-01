@@ -21,6 +21,7 @@ class CreateSurveyResponsesTable extends Migration
             $table->unsignedBigInteger('answer_id');
             $table->string('name');
             $table->string('email');
+             $table->softDeletes();
             $table->timestamps();
         });
     }

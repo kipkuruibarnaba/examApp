@@ -61,14 +61,15 @@
                     <td>{{$category->title}}</td>
                     <td>{{$category->purpose}}</td>
                     <td>
-                        <a href="{{route('category.get',$category ->id)}}" class="btn btn-secondary">Add Question</a>
+                        <a href="{{route('category.get',$category ->id)}}" class="btn btn-secondary btn-sm">Add Question</a>
                     </td>
                     <td>
-                      <a href="{{route('viewquestions.get',$category ->id)}}" class="btn btn-success">View</a>
+                      <a href="{{route('viewquestions.get',$category ->id)}}" class="btn btn-success btn-sm">View</a>
                     </td> 
-                     <td>
-                      <a href="{{route('editquestion',$category ->id)}}" class="btn btn-danger">Edit</a>
-                    </td>                                        
+                    <td>
+                      <a href="{{route('editquestion',$category ->id)}}" class="btn btn-warning btn-sm">Edit</a>                     
+                      <a href="{{route('deletequestion',$category ->id)}}" class="btn btn-danger btn-sm">delete</a>
+                    </td>                                                           
                   </tr>
                 @endforeach
                 </tbody>

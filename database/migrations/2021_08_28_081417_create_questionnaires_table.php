@@ -18,6 +18,7 @@ class CreateQuestionnairesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('purpose');
+             $table->softDeletes();
             $table->timestamps();
         });
     }

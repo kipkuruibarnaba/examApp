@@ -17,6 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('questionnaire_id');
             $table->string('question');
+             $table->softDeletes();
             $table->timestamps();
         });
     }
