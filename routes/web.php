@@ -84,4 +84,14 @@ Route::group(['prefix'=>'admin',  'middleware'=>'auth'], function (){
         'uses' => 'HomeController@SurveyReport',
         'as'=> 'generateSurveyPdf'
     ]); 
+    Route::get('/editquestion/{id}',[
+        'uses' => 'QuestionnaireController@edit',
+        'as'=> 'editquestion'
+    ]); 
+
+     Route::post('/updatequestions/{id}',[
+        'uses' => 'QuestionnaireController@update',
+        'as'=> 'updatequestions'
+    ]); 
+    
 });

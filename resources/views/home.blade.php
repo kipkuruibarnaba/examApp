@@ -51,6 +51,7 @@
                     <th scope="col">Purpose</th>
                     <th scope="col">Add Question</th>
                     <th scope="col">View</th>
+                    <th scope="col">Operation</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -64,7 +65,10 @@
                     </td>
                     <td>
                       <a href="{{route('viewquestions.get',$category ->id)}}" class="btn btn-success">View</a>
-                  </td>                    
+                    </td> 
+                     <td>
+                      <a href="{{route('editquestion',$category ->id)}}" class="btn btn-danger">Edit</a>
+                    </td>                                        
                   </tr>
                 @endforeach
                 </tbody>

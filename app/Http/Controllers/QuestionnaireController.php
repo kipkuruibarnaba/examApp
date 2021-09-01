@@ -74,7 +74,8 @@ class QuestionnaireController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Questionnaire::find($id);
+         return view('questionnaires.edit', compact('category'));
     }
 
     /**
@@ -86,7 +87,12 @@ class QuestionnaireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $updatedCategory = @Questionnaire::where(['id'=>$id])->update([
+          'user_id' => auth::user()->id,
+          'title' => $request->category,
+          'purpose' => $request->purpose
+        ]);
+        return redirect(url('/'))->with('success', 'Category updated successfully');
     }
 
     /**
